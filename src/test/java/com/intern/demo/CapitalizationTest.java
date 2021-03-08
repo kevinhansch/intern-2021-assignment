@@ -3,10 +3,7 @@ package com.intern.demo;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -29,44 +26,9 @@ public class CapitalizationTest {
 
         Map<String, List<String>> result = Capitalization.convertToMap(books);
 
-        int authorIndex = 0;
-        for (String author : result.keySet()) { ;
-            if (authorIndex == 0) {
-                assertEquals("Jane Stark", author);
-
-                int bookIndex = 0;
-                for (String title : result.get(author)) {
-                    if (bookIndex == 0) {
-                        assertEquals("Local Book 1", title);
-                    } else if (bookIndex == 1) {
-                        assertEquals("Local Book 2", title);
-                    } else if (bookIndex == 2) {
-                        assertEquals("Local Book 3", title);
-                    } else if (bookIndex == 3) {
-                        assertEquals("Local Book 4", title);
-                    }
-                    bookIndex++;
-                }
-            } else if (authorIndex == 1) {
-                assertEquals("John Doe", author);
-
-                int bookIndex = 0;
-                for (String title : result.get(author)) {
-                    if (bookIndex == 0) {
-                        assertEquals("Imported Book 1", title);
-                    } else if (bookIndex == 1) {
-                        assertEquals("Imported Book 2", title);
-                    } else if (bookIndex == 2) {
-                        assertEquals("Imported Book 3", title);
-                    } else if (bookIndex == 3) {
-                        assertEquals("Imported Book 4", title);
-                    }
-                    bookIndex++;
-                }
-            }
-            authorIndex++;
-        }
-
-        System.out.println(result);
+        Map<String, List<String>> expectedOutput = new HashMap<>();
+        expectedOutput.put("Jane Stark", Arrays.asList("Local Book 1", "Local Book 2", "Local Book 3", "Local Book 4"));
+        expectedOutput.put("John Doe", Arrays.asList("Imported Book 1", "Imported Book 2", "Imported Book 3", "Imported Book 4"));
+        assertEquals(expectedOutput, result);
     }
 }
