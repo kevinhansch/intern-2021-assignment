@@ -30,11 +30,6 @@ public class Capitalization {
     }
 
     public static Map<String, List<String>> convertToMap (List<Book> inputs) {
-
-        if (inputs.isEmpty()) {
-            return null;
-        }
-
         return inputs.stream()
                 .collect(Collectors.groupingBy(book -> capitalize(book.getAuthor()),
                         Collectors.mapping(book -> capitalize(book.getTitle()), Collectors.toList())));
