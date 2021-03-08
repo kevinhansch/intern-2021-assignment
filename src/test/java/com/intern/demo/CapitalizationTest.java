@@ -26,9 +26,10 @@ public class CapitalizationTest {
 
         Map<String, List<String>> result = Capitalization.convertToMap(books);
 
-        Map<String, List<String>> expectedOutput = new HashMap<>();
-        expectedOutput.put("Jane Stark", Arrays.asList("Local Book 1", "Local Book 2", "Local Book 3", "Local Book 4"));
-        expectedOutput.put("John Doe", Arrays.asList("Imported Book 1", "Imported Book 2", "Imported Book 3", "Imported Book 4"));
+        Map<String, List<String>> expectedOutput = new HashMap<String, List<String>>() {{
+            put("Jane Stark", Arrays.asList("Local Book 1", "Local Book 2", "Local Book 3", "Local Book 4"));
+            put("John Doe", Arrays.asList("Imported Book 1", "Imported Book 2", "Imported Book 3", "Imported Book 4"));
+        }};
         assertEquals(expectedOutput, result);
     }
 }
